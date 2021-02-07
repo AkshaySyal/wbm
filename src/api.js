@@ -26,10 +26,7 @@ async function start({ showBrowser = false, qrCodeData = false, session = true }
         ]
     }
     try {
-        const browser = await puppeteer.launch({
-        // headless: true, // debug only
-        args: ['--no-sandbox']
-      })
+        const browser = await puppeteer.launch(args)
         page = await browser.newPage();
         // prevent dialog blocking page and just accept it(necessary when a message is sent too fast)
         page.on("dialog", async dialog => { await dialog.accept(); });
